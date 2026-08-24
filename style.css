@@ -1,0 +1,378 @@
+:root {
+    --bg-dark: #0b0f19;
+    --card-bg: rgba(22, 28, 45, 0.85);
+    --gold: #d4af37;
+    --gold-hover: #f3e5ab;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   Efectos y Keyframes de Animacion
+   ========================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Aplicacin de animaciones automáticas */
+header {
+    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero h1 {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hero p {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0; /* Previene parpadeo antes de animar */
+}
+
+.hero .btn {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.section-title, .section-subtitle {
+    animation: fadeIn 0.7s ease-out forwards;
+}
+
+.card {
+    animation: scaleUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Retardo en cascada para tarjetas (Efecto Stagger) */
+.grid-cards .card:nth-child(1) { animation-delay: 0.1s; }
+.grid-cards .card:nth-child(2) { animation-delay: 0.25s; }
+.grid-cards .card:nth-child(3) { animation-delay: 0.4s; }
+.grid-cards .card:nth-child(4) { animation-delay: 0.55s; }
+
+/* Retardo en cascada para la galeria */
+.gallery-item {
+    animation: scaleUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.gallery-grid .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-grid .gallery-item:nth-child(2) { animation-delay: 0.25s; }
+.gallery-grid .gallery-item:nth-child(3) { animation-delay: 0.4s; }
+.gallery-grid .gallery-item:nth-child(4) { animation-delay: 0.55s; }
+
+.form-container {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* ==========================================
+   Estructura y Estilos Visuales
+   ========================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 15, 25, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+}
+
+.logo {
+    color: var(--gold);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.03);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+/* Botones con animación al pasar el mouse */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Layout Principal */
+.container {
+    max-width: 1300px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Tarjetas e Imágenes */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+    border-color: var(--gold);
+}
+
+.card-img {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.8rem;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.card-content h3 {
+    color: var(--gold);
+    font-size: 1.3rem;
+}
+
+.price {
+    color: var(--gold-hover);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(11, 15, 25, 0.95));
+    padding: 1rem;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Formularios */
+.form-container {
+    max-width: 650px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--gold);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(11, 15, 25, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #fff;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background: #06080e;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    color: var(--text-muted);
+    margin-top: 5rem;
+}
