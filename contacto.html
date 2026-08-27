@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante Cielo - Contacto</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,6 +20,7 @@
                 <li><a href="reservas.html">Reservas</a></li>
                 <li><a href="contacto.html" class="active">Contacto</a></li>
                 <li><a href="cocteleria.html">Licores & Cava</a></li>
+                <li><a href="login.html" class="active">Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -28,7 +30,12 @@
         <p class="section-subtitle">Estamos a tu disposición para consultas y solicitudes especiales</p>
 
         <div class="form-container">
-            <form action="#">
+            <!-- Mensaje de confirmación oculto por defecto -->
+            <div id="mensaje-confirmacion" style="display: none; background: rgba(212, 175, 55, 0.15); border: 1px solid #d4af37; color: #d4af37; padding: 15px; border-radius: 6px; text-align: center; margin-bottom: 20px;">
+                ¡Gracias por contactarnos! Hemos recibido tu mensaje y te responderemos a la brevedad.
+            </div>
+
+            <form id="contact-form" action="#">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo</label>
                     <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required>
@@ -47,5 +54,21 @@
     </main>
 
     <footer><p>&copy; 2026 Restaurante Cielo. Todos los derechos reservados.</p></footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Muestra la confirmación
+            const confirmMsg = document.getElementById('mensaje-confirmacion');
+            confirmMsg.style.display = 'block';
+            
+            // Limpia el formulario
+            this.reset();
+            
+            // Desplaza suavemente hacia el mensaje
+            confirmMsg.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
